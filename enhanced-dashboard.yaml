@@ -1,0 +1,330 @@
+# Enhanced Dashboard - Modern & Minimal Design
+# Created: 2026-07-11
+# Based on Product UI Styleguide Design System
+# 
+# Installation:
+# 1. Add to configuration.yaml:
+#    lovelace:
+#      dashboards:
+#        enhanced:
+#          mode: yaml
+#          filename: dashboards/enhanced.yaml
+#
+# 2. Save this file as: /config/dashboards/enhanced.yaml
+# 3. Restart Home Assistant
+# 4. Access at: https://your-ha-instance/dashboard-enhanced/0
+
+title: Enhanced Dashboard
+icon: mdi:palette
+views:
+  - title: Home
+    path: home
+    icon: mdi:home
+    sections:
+      # HEADER - Welcome Section
+      - type: grid
+        columns: 1
+        cards:
+          - type: custom:mushroom-title-card
+            title: Good {{ 'Evening' if now().hour >= 18 else ('Afternoon' if now().hour >= 12 else 'Morning') }} 🏠
+            subtitle: "Welcome to your Enhanced Dashboard"
+            card_mod:
+              style:
+                mushroom-title-card$:
+                  ha-card:
+                    background: 'linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%)'
+                    box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                    border-radius: '10px'
+                    padding: '20px 24px'
+                    border: '1px solid #E9B520'
+
+      # WEATHER & TIME CARD
+      - type: grid
+        columns: 1
+        cards:
+          - type: weather-forecast
+            entity: weather.home
+            show_current: true
+            show_forecast: true
+            card_mod:
+              style:
+                ha-card:
+                  background: '#FFFFFF'
+                  border-radius: '10px'
+                  box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                  border: '1px solid #E9B520'
+                  padding: '16px'
+
+      # QUICK ACCESS - 2x2 GRID
+      - type: grid
+        columns: 2
+        cards:
+          # Lights Summary
+          - type: custom:mushroom-title-card
+            title: 💡 Lights
+            subtitle: Control & Status
+            card_mod:
+              style:
+                mushroom-title-card$:
+                  ha-card:
+                    background: '#FFFFFF'
+                    border-radius: '10px'
+                    box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                    border: '1px solid #E9B520'
+                    padding: '16px'
+                    cursor: pointer
+                    transition: 'all 0.2s ease-out'
+                  ha-card:hover:
+                    box-shadow: '0 8px 16px rgba(0,0,0,0.15)'
+            tap_action:
+              action: navigate
+              navigation_path: '#lights'
+
+          # Climate Summary
+          - type: custom:mushroom-title-card
+            title: 🌡️ Climate
+            subtitle: Temperature Control
+            card_mod:
+              style:
+                mushroom-title-card$:
+                  ha-card:
+                    background: '#FFFFFF'
+                    border-radius: '10px'
+                    box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                    border: '1px solid #E9B520'
+                    padding: '16px'
+                    cursor: pointer
+                    transition: 'all 0.2s ease-out'
+                  ha-card:hover:
+                    box-shadow: '0 8px 16px rgba(0,0,0,0.15)'
+            tap_action:
+              action: navigate
+              navigation_path: '#climate'
+
+          # Media Summary
+          - type: custom:mushroom-title-card
+            title: 📺 Media
+            subtitle: Entertainment
+            card_mod:
+              style:
+                mushroom-title-card$:
+                  ha-card:
+                    background: '#FFFFFF'
+                    border-radius: '10px'
+                    box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                    border: '1px solid #E9B520'
+                    padding: '16px'
+                    cursor: pointer
+                    transition: 'all 0.2s ease-out'
+                  ha-card:hover:
+                    box-shadow: '0 8px 16px rgba(0,0,0,0.15)'
+            tap_action:
+              action: navigate
+              navigation_path: '#media'
+
+          # Cameras Summary
+          - type: custom:mushroom-title-card
+            title: 📷 Cameras
+            subtitle: Monitoring
+            card_mod:
+              style:
+                mushroom-title-card$:
+                  ha-card:
+                    background: '#FFFFFF'
+                    border-radius: '10px'
+                    box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                    border: '1px solid #E9B520'
+                    padding: '16px'
+                    cursor: pointer
+                    transition: 'all 0.2s ease-out'
+                  ha-card:hover:
+                    box-shadow: '0 8px 16px rgba(0,0,0,0.15)'
+            tap_action:
+              action: navigate
+              navigation_path: '#cameras'
+
+  # LIGHTS VIEW
+  - title: Lights
+    path: lights
+    icon: mdi:lightbulb
+    sections:
+      - type: grid
+        columns: 1
+        cards:
+          - type: custom:mushroom-title-card
+            title: 💡 Lights Management
+            subtitle: Control all lights in your home
+
+      - type: grid
+        columns: 2
+        cards:
+          - type: custom:button-card
+            entity: light.candeeiro_entrada
+            name: Desk Lamp
+            icon: mdi:desk-lamp
+            show_state: true
+            show_name: true
+            show_icon: true
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            double_tap_action:
+              action: call-service
+              service: light.turn_off
+              target:
+                entity_id: light.candeeiro_entrada
+            card_mod:
+              style:
+                ha-card:
+                  background: '#FFFFFF'
+                  border-radius: '10px'
+                  box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                  border: '1px solid #E9B520'
+                  padding: '12px'
+                  transition: 'all 0.2s ease-out'
+                  color: '#2C2C2C'
+                ha-card:hover:
+                  box-shadow: '0 8px 16px rgba(0,0,0,0.15)'
+                  transform: 'translateY(-2px)'
+
+          - type: custom:button-card
+            entity: switch.luz_entrada
+            name: Ceiling Light
+            icon: mdi:ceiling-light-multiple-outline
+            show_state: true
+            show_name: true
+            show_icon: true
+            tap_action:
+              action: toggle
+            card_mod:
+              style:
+                ha-card:
+                  background: '#FFFFFF'
+                  border-radius: '10px'
+                  box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                  border: '1px solid #E9B520'
+                  padding: '12px'
+                  transition: 'all 0.2s ease-out'
+                  color: '#2C2C2C'
+                ha-card:hover:
+                  box-shadow: '0 8px 16px rgba(0,0,0,0.15)'
+                  transform: 'translateY(-2px)'
+
+          - type: custom:button-card
+            entity: switch.luz_corredor
+            name: Hallway Light
+            icon: mdi:ceiling-light-multiple-outline
+            show_state: true
+            show_name: true
+            show_icon: true
+            tap_action:
+              action: toggle
+            card_mod:
+              style:
+                ha-card:
+                  background: '#FFFFFF'
+                  border-radius: '10px'
+                  box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                  border: '1px solid #E9B520'
+                  padding: '12px'
+                  transition: 'all 0.2s ease-out'
+                  color: '#2C2C2C'
+                ha-card:hover:
+                  box-shadow: '0 8px 16px rgba(0,0,0,0.15)'
+                  transform: 'translateY(-2px)'
+
+  # CLIMATE VIEW
+  - title: Climate
+    path: climate
+    icon: mdi:thermometer
+    sections:
+      - type: grid
+        columns: 1
+        cards:
+          - type: custom:mushroom-title-card
+            title: 🌡️ Climate Control
+            subtitle: Manage temperature and comfort settings
+
+      - type: custom:mushroom-climate-card
+        entity: climate.ac_suite
+        show_temperature: true
+        show_humidity: true
+        show_target_temperature: true
+        card_mod:
+          style:
+            ha-card:
+              background: '#FFFFFF'
+              border-radius: '10px'
+              box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+              border: '1px solid #E9B520'
+              padding: '16px'
+
+  # CAMERAS VIEW
+  - title: Cameras
+    path: cameras
+    icon: mdi:camera
+    sections:
+      - type: grid
+        columns: 1
+        cards:
+          - type: custom:mushroom-title-card
+            title: 📷 Cameras
+            subtitle: Monitor your home
+
+      - type: grid
+        columns: 2
+        cards:
+          - type: picture-entity
+            entity: camera.entrada
+            show_state: true
+            show_name: true
+            camera_view: live
+            card_mod:
+              style:
+                ha-card:
+                  background: '#FFFFFF'
+                  border-radius: '10px'
+                  box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                  border: '1px solid #E9B520'
+                  overflow: hidden
+
+          - type: picture-entity
+            entity: camera.sala
+            show_state: true
+            show_name: true
+            camera_view: live
+            card_mod:
+              style:
+                ha-card:
+                  background: '#FFFFFF'
+                  border-radius: '10px'
+                  box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+                  border: '1px solid #E9B520'
+                  overflow: hidden
+
+  # MEDIA VIEW
+  - title: Media
+    path: media
+    icon: mdi:play-circle
+    sections:
+      - type: grid
+        columns: 1
+        cards:
+          - type: custom:mushroom-title-card
+            title: 📺 Media & Entertainment
+            subtitle: Control your media devices
+
+      - type: custom:mushroom-media-player-card
+        entity: media_player.apple_tv_suite
+        show_volume: true
+        show_source: true
+        show_when_off: true
+        card_mod:
+          style:
+            ha-card:
+              background: '#FFFFFF'
+              border-radius: '10px'
+              box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+              border: '1px solid #E9B520'
+              padding: '16px'
