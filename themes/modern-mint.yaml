@@ -1,0 +1,92 @@
+# Home Assistant Dashboard - Modern Mint Theme
+# Based on Product UI Styleguide Design System
+
+# For use in: configuration.yaml
+# frontend:
+#   themes:
+#     modern_mint:
+#       <paste content below>
+
+# Colors
+primary-color: '#A8D8D8'
+light-primary-color: '#C5E3E3'
+dark-primary-color: '#7DC9C9'
+
+# Backgrounds & Surfaces
+primary-background-color: '#F5F5F5'
+secondary-background-color: '#FFFFFF'
+divider-color: '#E9B520'
+
+# Text
+primary-text-color: '#2C2C2C'
+secondary-text-color: '#666666'
+text-primary-background-color: '#2C2C2C'
+
+# States
+state-on-color: '#A8D8D8'
+state-off-color: '#E9B520'
+state-unavailable-color: '#CCCCCC'
+
+# Alerts
+error-color: '#F44336'
+warning-color: '#FFC107'
+success-color: '#4CAF50'
+info-color: '#2196F3'
+
+# Cards
+paper-card-background-color: '#FFFFFF'
+paper-card-header-color: '#2C2C2C'
+
+# Inputs
+paper-input-container-color: '#666666'
+paper-input-container-focus-color: '#A8D8D8'
+paper-input-container-invalid-color: '#F44336'
+paper-listbox-background-color: '#FFFFFF'
+paper-menu-button-dropdown-background: '#FFFFFF'
+paper-tabs-selection-color: '#A8D8D8'
+paper-tab-ink-color: '#A8D8D8'
+
+# Shadows & Elevation
+# Light elevation
+shadow-elevation-1dp_-_box-shadow: '0 2px 4px rgba(0,0,0,0.1)'
+shadow-elevation-2dp_-_box-shadow: '0 4px 8px rgba(0,0,0,0.12)'
+shadow-elevation-3dp_-_box-shadow: '0 8px 16px rgba(0,0,0,0.15)'
+
+# Typography (via Card Mod - see enhanced-dashboard.yaml for details)
+
+# Custom theme properties for Card Mod
+paper-button-flat-focus-color: 'rgba(168, 216, 216, 0.2)'
+paper-icon-button-ink-color: '#A8D8D8'
+
+# Sliders
+paper-slider-active-color: '#A8D8D8'
+paper-slider-secondary-color: '#C5E3E3'
+paper-slider-container-color: '#CCCCCC'
+
+# Toggles & Switches
+paper-toggle-button-checked-ink-color: '#A8D8D8'
+paper-toggle-button-unchecked-ink-color: '#E9B520'
+
+# Badges
+ha-label-badge-color: '#A8D8D8'
+ha-label-badge-text-color: '#2C2C2C'
+ha-label-badge-background-color: '#FFFFFF'
+
+# Custom HA card colors
+ha-card-border-radius: '10px'
+ha-card-box-shadow: 'var(--shadow-elevation-2dp_-_box-shadow)'
+
+# Lovelace UI
+lovelace-background: '#F5F5F5'
+
+# Climate colors
+temperature-on-color: '#A8D8D8'
+temperature-off-color: '#E9B520'
+
+# Light colors
+light-on-color: '#A8D8D8'
+light-off-color: '#E9B520'
+
+# Lock colors
+lock-color: '#4CAF50'
+unlock-color: '#F44336'
