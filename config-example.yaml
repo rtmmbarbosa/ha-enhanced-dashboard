@@ -1,0 +1,25 @@
+# Example Configuration for Enhanced Dashboard
+# Add this to your Home Assistant configuration.yaml
+
+# Enable YAML mode for Lovelace
+lovelace:
+  mode: yaml
+  dashboards:
+    enhanced:
+      mode: yaml
+      filename: dashboards/enhanced-dashboard.yaml
+      title: Enhanced Dashboard
+      icon: mdi:palette
+
+# Apply the Modern Mint theme globally
+frontend:
+  themes:
+    modern_mint: !include themes/modern-mint.yaml
+    # Optional: Set Modern Mint as default theme
+    # default_theme: modern_mint
+
+# Optional: Configure specific theme for admin user
+# homeassistant:
+#   customize:
+#     global:
+#       theme: modern_mint
